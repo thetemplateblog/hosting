@@ -3,11 +3,19 @@
 namespace Thetemplateblog\Hosting\Http\Controllers;
 
 use Statamic\Http\Controllers\CP\CpController;
+use Statamic\Facades\Entry;
 
 class HostingController extends CpController
 {
     public function index()
     {
-        return view('hosting::index');
+        $servers = Entry::query()
+            ->where('collection', 'servers')
+            ->orderBy('title')
+            ->get();
+
+        return view('hosting::index', [
+            'servers' => $servers
+        ]);
     }
 }

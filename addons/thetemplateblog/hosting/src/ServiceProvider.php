@@ -2,6 +2,7 @@
 
 namespace Thetemplateblog\Hosting;
 
+use Statamic\Facades\CP\Nav;
 use Statamic\Providers\AddonServiceProvider;
 
 class ServiceProvider extends AddonServiceProvider
@@ -15,9 +16,9 @@ class ServiceProvider extends AddonServiceProvider
     public function bootAddon()
     {
         $this->app->booted(function () {
-            \Statamic\Facades\CP\Nav::extend(function ($nav) {
+            Nav::extend(function ($nav) {
                 $nav->tools('Hosting')
-                    ->route('statamic.cp.hosting.index')
+                    ->route('hosting.servers.index')  // Changed this to point directly to servers
                     ->icon('hammer-wrench');
             });
         });
