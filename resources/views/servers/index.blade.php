@@ -4,6 +4,7 @@
 @section('content')
     <div class="flex items-center justify-between mb-3">
         <h1>Servers</h1>
+
         @if(!empty($providers))
             <a href="{{ cp_route('hosting.servers.create') }}" class="btn-primary">Add Server</a>
         @else
@@ -80,9 +81,22 @@
                                     @method('DELETE')
                                     <button 
                                         type="submit"
-                                        class="btn btn-small"
+                                        class="btn btn-small text-red-600"
                                         onclick="return confirm('Are you sure you want to delete this server?')"
                                     >Delete</button>
+                                </form>
+                                {{-- Deploy Button --}}
+                                <form 
+                                    method="POST" 
+                                    action="{{ cp_route('hosting.servers.deploy.single', ['index' => $index]) }}" 
+                                    class="inline"
+                                >
+                                    @csrf
+                                    <button 
+                                        type="submit"
+                                        class="btn btn-small text-green-600"
+                                        onclick="return confirm('Are you sure you want to deploy this server?')"
+                                    >Deploy</button>
                                 </form>
                             </div>
                         </td>

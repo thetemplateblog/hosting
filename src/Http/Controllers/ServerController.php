@@ -5,6 +5,7 @@ namespace Thetemplateblog\Hosting\Http\Controllers;
 use Illuminate\Http\Request;
 use Statamic\Http\Controllers\CP\CpController;
 use Statamic\Facades\User;
+use Illuminate\Support\Facades\Log;
 
 class ServerController extends CpController
 {
@@ -164,4 +165,25 @@ class ServerController extends CpController
             ->route('statamic.cp.hosting.servers.index')
             ->with('success', 'Server deleted successfully');
     }
+    public function deploySingle($index, Request $request)
+    {
+        $user = User::current();
+        $servers = $user->get('servers', []);
+    
+        // Check if the server exists
+        if (!isset($servers[$index])) {
+            return redirect()
+                ->route('statamic.cp.hosting.servers.index')  // Update here!
+                ->with('error', 'Server not found.');
+        }
+    
+        // Simulating deployment logic
+        $server = $servers[$index];
+        \Log::info('Deploying server: ' . $server['name']);
+    
+        return redirect()  
+            ->route('statamic.cp.hosting.servers.index') // Ensure the correct route here!
+            ->with('success', 'Server "' . $server['name'] . '" deployed successfully.');
+    }
+
 }

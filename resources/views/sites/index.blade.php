@@ -27,7 +27,9 @@
         <div class="card p-4">
             <p class="text-gray-700">You need to configure at least one server before you can add sites.</p>
             <p class="mt-2">
-                <a href="{{ cp_route('hosting.servers.create') }}" class="text-blue-600 hover:text-blue-800">Click here to add your first server</a>
+                <a href="{{ cp_route('hosting.servers.create') }}" class="text-blue-600 hover:text-blue-800">
+                    Click here to add your first server
+                </a>
             </p>
         </div>
     @else
@@ -64,8 +66,7 @@
                                 <form 
                                     method="POST" 
                                     action="{{ cp_route('hosting.sites.destroy', ['index' => $index]) }}" 
-                                    class="inline"
-                                >
+                                    class="inline">
                                     @csrf
                                     @method('DELETE')
                                     <button 
@@ -73,6 +74,19 @@
                                         class="btn btn-small"
                                         onclick="return confirm('Are you sure you want to delete this site?')"
                                     >Delete</button>
+                                </form>
+
+                                {{-- Deploy Button --}}
+                                <form 
+                                    method="POST" 
+                                    action="{{ cp_route('hosting.sites.deploy.single', ['index' => $index]) }}" 
+                                    class="inline">
+                                    @csrf
+                                    <button 
+                                        type="submit"
+                                        class="btn btn-small text-green-600"
+                                        onclick="return confirm('Are you sure you want to deploy this site?')"
+                                    >Deploy</button>
                                 </form>
                             </div>
                         </td>

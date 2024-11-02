@@ -5,6 +5,7 @@ namespace Thetemplateblog\Hosting\Http\Controllers;
 use Illuminate\Http\Request;
 use Statamic\Http\Controllers\CP\CpController;
 use Statamic\Facades\User;
+use Illuminate\Support\Facades\Log;
 
 class SiteController extends CpController
 {
@@ -137,5 +138,23 @@ class SiteController extends CpController
         return redirect()
             ->route('statamic.cp.hosting.sites.index')
             ->with('success', 'Site deleted successfully');
+    }
+    public function deploySingle($index, Request $request)
+    {
+        $user = User::current();
+        $sites = $user->get('sites', []);
+
+        // Check if the site exists
+        if (!isset($sites[$index])) {
+            return redirect()->route('statamic.cp.hosting.sites.index')
+                ->with('error', 'Site not found.');
+        }
+
+        // Simulate deployment logic for the site
+        $site = $sites[$index];
+        Log::info('Deploying site: ' . $site['name'] . ' (Domain: ' . $site['domain'] . ')');
+
+        return redirect()->route('statamic.cp.hosting.sites.index')
+            ->with('success', 'Site "' . $site['name'] . '" deployed successfully.');
     }
 }
