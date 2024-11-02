@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Thetemplatesblog\Hosting\Http\Controllers\HostingController;
+use Thetemplateblog\Hosting\Http\Controllers\HostingController;
 
-Route::prefix('hosting')->group(function () {
-    Route::get('/', [HostingController::class, 'index'])->name('hosting.index');
+Route::prefix('hosting')->name('statamic.cp.hosting.')->group(function () {
+    Route::get('/', [HostingController::class, 'index'])->name('index');
 });
