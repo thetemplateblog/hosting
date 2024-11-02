@@ -39,28 +39,23 @@
                         {{ $providerConfig['label'] ?? ucfirst($provider['provider_type']) }}
                     </td>
                     <td class="flex justify-end">
-                        <div class="btn-group">
-                            <a href="{{ cp_route('hosting.providers.edit', ['index' => $index]) }}" class="btn btn-small">Edit</a>
-                            <form 
-                                method="POST" 
-                                action="{{ cp_route('hosting.providers.destroy', ['index' => $index]) }}" 
-                                class="inline"
-                            >
-                                @csrf
-                                @method('DELETE')
-                                <button 
-                                    type="submit"
-                                    class="btn btn-small"
-                                    x-data
-                                    x-on:click.prevent="$dispatch('confirm-delete', {
-                                        title: 'Delete Provider',
-                                        message: 'Are you sure you want to delete this provider?',
-                                        callback: () => $el.closest('form').submit()
-                                    })"
-                                >Delete</button>
-                            </form>
-                        </div>
-                    </td>
+                            <div class="btn-group">
+                                <a href="{{ cp_route('hosting.providers.edit', ['index' => $index]) }}" class="btn btn-small">Edit</a>
+                                <form 
+                                    method="POST" 
+                                    action="{{ cp_route('hosting.providers.destroy', ['index' => $index]) }}" 
+                                    class="inline"
+                                >
+                                    @csrf
+                                    @method('DELETE')
+                                    <button 
+                                        type="submit"
+                                        class="btn btn-small"
+                                        onclick="return confirm('Are you sure you want to delete this provider?')"
+                                    >Delete</button>
+                                </form>
+                            </div>
+                        </td>
                 </tr>
                 @empty
                 <tr>
