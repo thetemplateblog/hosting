@@ -1,6 +1,6 @@
 <?php
 
-namespace Thetemplateblog\Hosting\Http\Controllers;
+namespace TheTemplateBlog\Hosting\Http\Controllers;
 
 use Statamic\Http\Controllers\CP\CpController;
 use Statamic\Facades\Entry;

@@ -4,7 +4,7 @@
     "type": "statamic-addon",
     "autoload": {
         "psr-4": {
-            "Thetemplateblog\\Hosting\\": "src"
+            "TheTemplateBlog\\Hosting\\": "src"
         }
     },
     "extra": {
@@ -14,7 +14,7 @@
         },
         "laravel": {
             "providers": [
-                "Thetemplateblog\\Hosting\\ServiceProvider"
+                "TheTemplateBlog\\Hosting\\ServiceProvider"
             ]
         }
     },

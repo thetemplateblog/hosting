@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Thetemplateblog\Hosting\Http\Controllers\ServerController;
-use Thetemplateblog\Hosting\Http\Controllers\ProviderController;
-use Thetemplateblog\Hosting\Http\Controllers\SiteController;
+use TheTemplateBlog\Hosting\Http\Controllers\ServerController;
+use TheTemplateBlog\Hosting\Http\Controllers\ProviderController;
+use TheTemplateBlog\Hosting\Http\Controllers\SiteController;
 
 Route::name('hosting.')->prefix('hosting')->group(function () {
 

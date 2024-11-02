@@ -1,8 +1,8 @@
 <?php
 
-namespace Thetemplateblog\Hosting\Tests;
+namespace TheTemplateBlog\Hosting\Tests;
 
-use Thetemplateblog\Hosting\ServiceProvider;
+use TheTemplateBlog\Hosting\ServiceProvider;
 use Statamic\Testing\AddonTestCase;
 
 abstract class TestCase extends AddonTestCase

@@ -1,6 +1,6 @@
 <?php
 
-namespace Thetemplateblog\Hosting\Http\Controllers;
+namespace TheTemplateBlog\Hosting\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Statamic\Http\Controllers\CP\CpController;

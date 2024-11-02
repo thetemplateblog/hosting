@@ -56,7 +56,7 @@ A comprehensive hosting infrastructure management addon for Statamic that helps 
 You can install this addon via composer:
 
 ```bash
-composer require thetemplateblog/hosting
+composer require TheTemplateBlog/hosting
 ```
 
 ## Requirements
@@ -195,7 +195,7 @@ Sensitive data is stored in secure user YAML files.
 bash
 
 ```
-git clone https://github.com/thetemplateblog/hosting.git
+git clone https://github.com/TheTemplateBlog/hosting.git
 ```
 
 2.  Install dependencies:
@@ -251,7 +251,7 @@ Full documentation is available at  [docs.example.com](https://docs.example.com/
 
 ### Issues
 
-Please report issues via the  [GitHub issue tracker](https://github.com/thetemplateblog/hosting/issues)
+Please report issues via the  [GitHub issue tracker](https://github.com/TheTemplateBlog/hosting/issues)
 
 ### Community
 

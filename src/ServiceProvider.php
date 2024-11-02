@@ -1,6 +1,6 @@
 <?php
 
-namespace Thetemplateblog\Hosting;
+namespace TheTemplateBlog\Hosting;
 
 use Statamic\Facades\CP\Nav;
 use Statamic\Facades\User;

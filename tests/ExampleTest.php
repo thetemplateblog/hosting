@@ -1,6 +1,6 @@
 <?php
 
-namespace Thetemplateblog\Hosting\Tests;
+namespace TheTemplateBlog\Hosting\Tests;
 
 class ExampleTest extends TestCase
 {
