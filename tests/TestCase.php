@@ -1,10 +1,11 @@
 <?php
 
-namespace Tests;
+namespace Thetemplateblog\Hosting\Tests;
 
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Thetemplateblog\Hosting\ServiceProvider;
+use Statamic\Testing\AddonTestCase;
 
-abstract class TestCase extends BaseTestCase
+abstract class TestCase extends AddonTestCase
 {
-    use CreatesApplication;
+    protected string $addonServiceProvider = ServiceProvider::class;
 }
