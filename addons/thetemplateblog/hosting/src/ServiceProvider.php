@@ -19,14 +19,16 @@ class ServiceProvider extends AddonServiceProvider
         Nav::extend(function ($nav) {
             $user = User::current();
             $providers = $user->get('providers', []);
+            $servers = $user->get('servers', []);
 
             $nav->create('Hosting')
                 ->section('Tools')
                 ->icon('hammer-wrench')
-                ->url(cp_route('hosting.providers.index'))
+                ->url(cp_route('hosting.sites.index'))  // Changed default URL to sites
                 ->children([
                     'Providers' => cp_route('hosting.providers.index'),
-                    'Servers' => cp_route('hosting.servers.index')
+                    'Servers' => cp_route('hosting.servers.index'),
+                    'Sites' => cp_route('hosting.sites.index')
                 ]);
         });
     }
