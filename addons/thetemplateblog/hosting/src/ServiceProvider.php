@@ -3,6 +3,7 @@
 namespace Thetemplateblog\Hosting;
 
 use Statamic\Facades\CP\Nav;
+use Statamic\Facades\User;
 use Statamic\Providers\AddonServiceProvider;
 
 class ServiceProvider extends AddonServiceProvider
@@ -15,12 +16,25 @@ class ServiceProvider extends AddonServiceProvider
 
     public function bootAddon()
     {
-        $this->app->booted(function () {
-            Nav::extend(function ($nav) {
-                $nav->tools('Hosting')
-                    ->route('hosting.servers.index')  // Changed this to point directly to servers
-                    ->icon('hammer-wrench');
-            });
+        Nav::extend(function ($nav) {
+            $user = User::current();
+            $providers = $user->get('providers', []);
+
+            $nav->create('Hosting')
+                ->section('Tools')
+                ->icon('hammer-wrench')
+                ->url(cp_route('hosting.providers.index'))
+                ->children([
+                    'Providers' => cp_route('hosting.providers.index'),
+                    'Servers' => cp_route('hosting.servers.index')
+                ]);
         });
+    }
+
+    public function register()
+    {
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/hosting.php', 'hosting'
+        );
     }
 }

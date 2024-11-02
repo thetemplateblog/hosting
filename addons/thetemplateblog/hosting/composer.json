@@ -1,30 +1,16 @@
 {
     "name": "thetemplateblog/hosting",
+    "description": "Hosting management addon for Statamic",
+    "type": "statamic-addon",
     "autoload": {
         "psr-4": {
             "Thetemplateblog\\Hosting\\": "src"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Thetemplateblog\\Hosting\\Tests\\": "tests"
-        }
-    },
-    "require": {
-        "statamic/cms": "^5.0"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^9.0"
-    },
-    "config": {
-        "allow-plugins": {
-            "pixelfear/composer-dist-plugin": true
-        }
-    },
     "extra": {
         "statamic": {
             "name": "Hosting",
-            "description": "Hosting addon"
+            "description": "Hosting management addon for Statamic"
         },
         "laravel": {
             "providers": [
@@ -32,6 +18,12 @@
             ]
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "require": {
+        "statamic/cms": "^4.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "pixelfear/composer-dist-plugin": true
+        }
+    }
 }

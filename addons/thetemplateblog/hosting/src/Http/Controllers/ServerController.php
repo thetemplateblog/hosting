@@ -11,29 +11,48 @@ class ServerController extends CpController
     public function index()
     {
         $user = User::current();
+        $providers = $user->get('providers', []);
         $servers = $user->get('servers', []);
 
+        if (empty($providers)) {
+            return redirect()->route('statamic.cp.hosting.providers.index')
+                ->with('error', 'Please configure at least one provider before adding servers.');
+        }
+
         return view('hosting::servers.index', [
-            'servers' => collect($servers)
+            'servers' => collect($servers),
+            'providers' => collect($providers)
         ]);
     }
 
     public function create()
     {
-        return view('hosting::servers.create');
+        $user = User::current();
+        $providers = $user->get('providers', []);
+
+        if (empty($providers)) {
+            return redirect()->route('statamic.cp.hosting.providers.index')
+                ->with('error', 'Please configure at least one provider before adding servers.');
+        }
+
+        return view('hosting::servers.create', [
+            'providers' => collect($providers)
+        ]);
     }
 
     public function store(Request $request)
     {
+        $user = User::current();
+        $providers = $user->get('providers', []);
+
         $validated = $request->validate([
             'name' => 'required',
-            'provider' => 'required|in:'.implode(',', collect(config('hosting.providers'))->pluck('provider_type')->toArray()),
+            'provider' => 'required|in:'.implode(',', collect($providers)->pluck('provider_type')->toArray()),
             'username' => 'nullable',
             'environment' => 'required|in:production,staging,development',
             'notes' => 'nullable'
         ]);
 
-        $user = User::current();
         $servers = $user->get('servers', []);
         
         $servers[] = [
@@ -57,6 +76,7 @@ class ServerController extends CpController
     {
         $user = User::current();
         $servers = $user->get('servers', []);
+        $providers = $user->get('providers', []);
         
         if (!isset($servers[$index])) {
             return redirect()->route('statamic.cp.hosting.servers.index')
@@ -65,7 +85,8 @@ class ServerController extends CpController
 
         return view('hosting::servers.show', [
             'server' => $servers[$index],
-            'index' => $index
+            'index' => $index,
+            'providers' => collect($providers)
         ]);
     }
 
@@ -73,6 +94,7 @@ class ServerController extends CpController
     {
         $user = User::current();
         $servers = $user->get('servers', []);
+        $providers = $user->get('providers', []);
         
         if (!isset($servers[$index])) {
             return redirect()->route('statamic.cp.hosting.servers.index')
@@ -81,21 +103,24 @@ class ServerController extends CpController
 
         return view('hosting::servers.edit', [
             'server' => $servers[$index],
-            'index' => $index
+            'index' => $index,
+            'providers' => collect($providers)
         ]);
     }
 
     public function update(Request $request, $index)
     {
+        $user = User::current();
+        $providers = $user->get('providers', []);
+        
         $validated = $request->validate([
             'name' => 'required',
-            'provider' => 'required|in:'.implode(',', collect(config('hosting.providers'))->pluck('provider_type')->toArray()),
+            'provider' => 'required|in:'.implode(',', collect($providers)->pluck('provider_type')->toArray()),
             'username' => 'nullable',
             'environment' => 'required|in:production,staging,development',
             'notes' => 'nullable'
         ]);
 
-        $user = User::current();
         $servers = $user->get('servers', []);
 
         if (!isset($servers[$index])) {

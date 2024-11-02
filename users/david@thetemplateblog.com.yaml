@@ -1,22 +1,20 @@
 name: 'David Childs'
 super: true
+providers:
+  -
+    label: Provider
+    provider_type: digitalocean
+    api_key: eyJpdiI6ImNEOUgrMGF6Rlo3ZTY4cFFxMTkzcmc9PSIsInZhbHVlIjoiQ0t5Q0ZxRzQ3ZEE0RVVpYXhpKzIyUGpvTks0QS9HN2tQckxhWmdaclNVaz0iLCJtYWMiOiI1MDFkOWYxZWQ2NTY0OWUxYmEzMGQ2ZDhhYWNlYTgyN2YyZmIwYTEwODYyMzc5ZTU5NjBkMzE1NzEzZjE4NjU5IiwidGFnIjoiIn0=
 servers:
   -
-    name: server
+    name: Server
     provider: digitalocean
     username: root
     environment: production
     notes: ''
     status: active
   -
-    name: server
-    provider: digitalocean
-    username: root
-    environment: production
-    notes: ''
-    status: active
-  -
-    name: server
+    name: Server2
     provider: digitalocean
     username: root
     environment: production
