@@ -1,0 +1,37 @@
+{
+    "name": "thetemplateblog/hosting",
+    "autoload": {
+        "psr-4": {
+            "Thetemplateblog\\Hosting\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Thetemplateblog\\Hosting\\Tests\\": "tests"
+        }
+    },
+    "require": {
+        "statamic/cms": "^5.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "pixelfear/composer-dist-plugin": true
+        }
+    },
+    "extra": {
+        "statamic": {
+            "name": "Hosting",
+            "description": "Hosting addon"
+        },
+        "laravel": {
+            "providers": [
+                "Thetemplateblog\\Hosting\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
